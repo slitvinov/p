@@ -2,7 +2,9 @@
 
 import sys
 import requests
-u = 'http://192.168.1.11:5000/api/Rover05'
+from math import pi
+#u = 'http://192.168.1.11:5000/api/Rover05'
+u = 'http://192.168.1.11:5000/api/elcaduck'
 
 def msg(s):
     sys.stderr.write(s)
@@ -10,6 +12,10 @@ def msg(s):
 def err(s):
     sys.stderr.write(s)
     exit(2)
+
+def status():
+    r = requests.get(u)
+    return 0 if r.status_code == 200 else 1    
 
 def backward(duration, power):
     s = u + '/' + 'backward'
@@ -42,8 +48,29 @@ def stop():
     r = requests.get(s)
     return 0 if r.status_code == 200 else 1
 
-#backward(0.5, 0.4)
-#forward(0.5, 0.4)
-#status = led()
-# rotate(1, 'left', 0.1)
-stop()
+def gps():
+    r = requests.get(u)
+    r = r.json()
+    x, y, rad = r['gps_x'], r['gps_y'], r['gps_orientation_rad']
+    return x, y, rad
+
+def angle():
+    x, y, rad = gps()
+    return rad
+
+def xy():
+    x, y, rad = gps()
+    return x, y
+
+def lidar():
+    s = u + '/' + 'lidar'
+    r = requests.get(s)
+    stat = r.status_code
+    r = r.json()
+    i = r['angle_increment']
+    r = r['intensities']
+    return i, r
+
+inc, inten = lidar()
+print(inc)
+print(inten)
