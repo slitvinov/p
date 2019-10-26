@@ -1,5 +1,5 @@
 # links
-192.168.1.11:5000/apidocs
+192.168.1.10:5000/apidocs
 http://192.168.1.10:5000/api/Rover05
 
 # examples
