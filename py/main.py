@@ -228,7 +228,7 @@ def forward_to(u, v):
         forward(0.5, power = 1)
         time.sleep(0.5)
 
-# 
+#
 rotate(1, 'left', 1)
 
 #g_scan(); g_visit()
