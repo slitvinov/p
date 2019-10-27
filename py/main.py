@@ -86,7 +86,7 @@ def g_scan():
             elif d > r:
                 g[i][j] = BLACK
                 break
-            elif g[i][j] != VISITED:
+            elif g[i][j]:
                 g[i][j] = WHITE
                 d += sp
                 x += dx
@@ -229,7 +229,10 @@ def forward_to(u, v):
         time.sleep(0.5)
 
 #
-rotate(1, 'left', 1)
+while True:
+    rotate(1, 'left', 1)
+    forward(1, 1)
+    backward(1, 1)
 
 #g_scan(); g_visit()
 #plt.imshow(g)

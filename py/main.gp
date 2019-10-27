@@ -6,4 +6,4 @@ plot [0:60][20:80] \
      "<grep black p.txt" w p pt 7 t "obstacles", \
      "<grep visited p.txt" w p ps 3 pt 7 t "visited"    
 
-
+system("echo >&2 scan.png")
