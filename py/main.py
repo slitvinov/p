@@ -228,6 +228,8 @@ def forward_to(u, v):
         forward(0.5, power = 1)
         time.sleep(0.5)
 
+
+
 #g_scan(); g_visit()
 #plt.imshow(g)
 #plt.show()
